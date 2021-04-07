@@ -3,6 +3,7 @@ package com.example.simplefirebaseapp;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.os.Build;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -23,9 +24,13 @@ import com.google.firebase.firestore.CollectionReference;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.Query;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
+import com.google.firebase.firestore.ServerTimestamp;
 
+import java.time.Instant;
+import java.time.ZonedDateTime;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -50,7 +55,7 @@ public class MainActivity extends AppCompatActivity {
 
     private void getDataOneTime(){
         tweetsCollection = FirebaseFirestore.getInstance().collection("tweets");
-        tweetsCollection.get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+        tweetsCollection.orderBy("timestamp", Query.Direction.ASCENDING).get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
                     @Override
                     public void onComplete(@NonNull Task<QuerySnapshot> task) {
                         if (task.isSuccessful()) {
@@ -58,7 +63,9 @@ public class MainActivity extends AppCompatActivity {
                             List<DocumentSnapshot> myListOfDocuments = task.getResult().getDocuments();
                             for(DocumentSnapshot curr : myListOfDocuments)
                             {
-                                allText += curr.getData().values()+ "\n";
+                                Object textarray[] = curr.getData().values().toArray();
+                                Object timeSent= textarray[0].toString().substring(11,19);
+                                allText += "User: " + textarray[2] + "\n" + "Send: " + timeSent + "\n" + "Message: "  + "\n" +textarray[3] + "\n\n";
                             }
                             txtTweets.setText(allText);
                         }
@@ -76,6 +83,11 @@ public class MainActivity extends AppCompatActivity {
         tweet.put("content", tweetText);
         tweet.put("type", "text");
         tweet.put("user", user);
+        tweet.put("timestamp", System.currentTimeMillis());
+
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+            tweet.put("date", ZonedDateTime.now().toString());
+        }
 
         tweetsCollection.add(tweet)
                 .addOnSuccessListener(new OnSuccessListener<DocumentReference>() {
@@ -85,5 +97,6 @@ public class MainActivity extends AppCompatActivity {
                     }
                 });
         getDataOneTime();
+        edtTweet.getText().clear();
     }
 }
