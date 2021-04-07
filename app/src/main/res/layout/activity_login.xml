@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:gravity="center"
-    android:padding="16dp"
+    android:padding="65dp"
     android:orientation="vertical"
     tools:context=".LoginActivity">
 
@@ -19,17 +19,17 @@
         android:inputType="textPassword"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="30dp"/>
+        android:layout_marginBottom="10dp"/>
 
     <Button
         android:id="@+id/btn_login"
-        android:layout_width="130dp"
+        android:layout_width="120dp"
         android:layout_height="wrap_content"
         android:text="Login" />
 
     <Button
         android:id="@+id/btn_register"
-        android:layout_width="130dp"
+        android:layout_width="120dp"
         android:layout_height="wrap_content"
         android:text="Register" />
 </LinearLayout>
