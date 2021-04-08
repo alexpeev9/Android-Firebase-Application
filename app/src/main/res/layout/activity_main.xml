@@ -41,13 +41,26 @@
                 android:layout_height="wrap_content"
                 android:text="Tweet" />
         </LinearLayout>
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:orientation="horizontal">
         <Button
             android:id="@+id/btn_refresh"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_gravity="center_horizontal"
+            android:layout_marginRight="10dp"
             android:text="Refresh Chat"
             android:drawableLeft="@drawable/image36x36"/>
+
+            <Button
+                android:id="@+id/btn_logout"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:drawableLeft="@drawable/logout36x36"
+                android:text="Logout" />
+        </LinearLayout>
     </LinearLayout>
 
 </LinearLayout>

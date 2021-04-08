@@ -54,7 +54,6 @@ public class LoginActivity extends AppCompatActivity {
                     }
                 });
                 }
-
     @OnClick(R.id.btn_register)
     public void onRegisterClicked(){
         String email = edtEmail.getText().toString();
@@ -73,6 +72,10 @@ public class LoginActivity extends AppCompatActivity {
                         }
                     }
                 });
+    }
+    @OnClick(R.id.btn_exit)
+    public void onExitClicked() {
+        System.exit(0);
     }
     public void redirectToMainScreen(){
         startActivity(new Intent(this,MainActivity.class));

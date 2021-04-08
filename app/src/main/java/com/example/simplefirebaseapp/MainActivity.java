@@ -3,6 +3,7 @@ package com.example.simplefirebaseapp;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
 import android.util.Log;
@@ -115,6 +116,13 @@ public class MainActivity extends AppCompatActivity {
         getDataOneTime();
         edtTweet.getText().clear();
     }
+    @OnClick(R.id.btn_logout)
+    public void onLogoutClicked() {
+        FirebaseAuth.getInstance().signOut();
+        startActivity(new Intent(MainActivity.this, LoginActivity.class));
+        finish();
+    }
+
     @OnClick(R.id.btn_refresh)
     public void onRegisterClicked() {
         getDataOneTime();
