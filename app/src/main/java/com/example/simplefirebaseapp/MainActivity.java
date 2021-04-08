@@ -63,14 +63,30 @@ public class MainActivity extends AppCompatActivity {
                             List<DocumentSnapshot> myListOfDocuments = task.getResult().getDocuments();
                             for(DocumentSnapshot curr : myListOfDocuments)
                             {
-                                Object textarray[] = curr.getData().values().toArray();
-                                Object timeSent= textarray[0].toString().substring(11,19);
-                                allText += "User: " + textarray[2] + "\n" + "Send: " + timeSent + "\n" + "Message: "  + "\n" +textarray[3] + "\n\n";
+                                Object textArray[] = curr.getData().values().toArray();
+                                allText += ConvertString(textArray);
+                                //Object textarray[] = curr.getData().values().toArray();
+                                //Object timeSent= textarray[0].toString().substring(11,19);
+                                //allText += "User: " + textarray[2] + "\n" + "Send: " + timeSent + "\n" + "Message: "  + "\n" +textarray[3] + "\n\n";
                             }
                             txtTweets.setText(allText);
                         }
                     }
                 });
+    }
+
+    private String ConvertString(Object[] textArray) {
+        Object timeSent= textArray[0].toString().substring(11,19);
+
+        StringBuilder stringBuilder = new StringBuilder();
+        stringBuilder.append("User: ");
+        stringBuilder.append(textArray[2]);
+        stringBuilder.append("\nSend: ");
+        stringBuilder.append(timeSent);
+        stringBuilder.append("\nMessage:\n");
+        stringBuilder.append(textArray[3]);
+        stringBuilder.append("\n\n");
+        return stringBuilder.toString();
     }
 
     @OnClick(R.id.btn_tweet)
@@ -98,5 +114,9 @@ public class MainActivity extends AppCompatActivity {
                 });
         getDataOneTime();
         edtTweet.getText().clear();
+    }
+    @OnClick(R.id.btn_refresh)
+    public void onRegisterClicked() {
+        getDataOneTime();
     }
 }

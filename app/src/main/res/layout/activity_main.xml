@@ -16,8 +16,7 @@
             android:id="@+id/txt_tweets"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:autoLink="web"
-            android:text="Hello World!" />
+            android:autoLink="web"/>
     </ScrollView>
 
     <LinearLayout
@@ -42,7 +41,13 @@
                 android:layout_height="wrap_content"
                 android:text="Tweet" />
         </LinearLayout>
-
+        <Button
+            android:id="@+id/btn_refresh"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:text="Refresh Chat"
+            android:drawableLeft="@drawable/image36x36"/>
     </LinearLayout>
 
 </LinearLayout>
