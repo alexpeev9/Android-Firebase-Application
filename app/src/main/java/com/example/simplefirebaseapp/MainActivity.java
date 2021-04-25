@@ -131,5 +131,6 @@ public class MainActivity extends AppCompatActivity {
     @OnClick(R.id.btn_personal)
     public void onPersonalClicked(){
         startActivity(new Intent(MainActivity.this, PersonalChatActivity.class));
+        finish();
     }
 }
