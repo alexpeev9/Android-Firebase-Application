@@ -127,4 +127,9 @@ public class MainActivity extends AppCompatActivity {
     public void onRegisterClicked() {
         getDataOneTime();
     }
+
+    @OnClick(R.id.btn_personal)
+    public void onPersonalClicked(){
+        startActivity(new Intent(MainActivity.this, PersonalChatActivity.class));
+    }
 }
