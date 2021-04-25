@@ -57,4 +57,9 @@
         android:layout_width="120dp"
         android:layout_height="wrap_content"
         android:text="Exit" />
+    <Button
+        android:id="@+id/btn_delete"
+        android:layout_width="120dp"
+        android:layout_height="wrap_content"
+        android:text="DROP DB" />
 </LinearLayout>

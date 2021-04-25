@@ -87,6 +87,7 @@ public class MainActivity extends AppCompatActivity {
         stringBuilder.append("\nMessage:\n");
         stringBuilder.append(textArray[3]);
         stringBuilder.append("\n\n");
+        /*stringBuilder.append(textArray[4]); timestamp */
         return stringBuilder.toString();
     }
 
