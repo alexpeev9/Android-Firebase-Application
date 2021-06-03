@@ -56,7 +56,7 @@ public class PersonalChatActivity extends AppCompatActivity {
                     {
                         Object textArray[] = curr.getData().values().toArray();
                        if(FirebaseAuth.getInstance().getCurrentUser().getEmail().equals(textArray[1])) {
-                           allText += ConvertString(textArray);
+                           allText += convertString(textArray);
                        }
                     }
                     txtTweets.setText(allText);
@@ -64,7 +64,7 @@ public class PersonalChatActivity extends AppCompatActivity {
             }
         });
     }
-    private String ConvertString(Object[] textArray) {
+    private String convertString(Object[] textArray) {
         Object timeSent= textArray[0].toString().substring(11,19); /* data full */
         StringBuilder stringBuilder = new StringBuilder();
         stringBuilder.append("Date:");

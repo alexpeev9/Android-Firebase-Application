@@ -65,7 +65,7 @@ public class MainActivity extends AppCompatActivity {
                             for(DocumentSnapshot curr : myListOfDocuments)
                             {
                                 Object textArray[] = curr.getData().values().toArray();
-                                allText += ConvertString(textArray);
+                                allText += convertString(textArray);
                                 //Object textarray[] = curr.getData().values().toArray();
                                 //Object timeSent= textarray[0].toString().substring(11,19);
                                 //allText += "User: " + textarray[2] + "\n" + "Send: " + timeSent + "\n" + "Message: "  + "\n" +textarray[3] + "\n\n";
@@ -76,7 +76,7 @@ public class MainActivity extends AppCompatActivity {
                 });
     }
 
-    private String ConvertString(Object[] textArray) {
+    private String convertString(Object[] textArray) {
         Object timeSent= textArray[0].toString().substring(11,19);
 
         StringBuilder stringBuilder = new StringBuilder();
